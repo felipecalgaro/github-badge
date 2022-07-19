@@ -12,9 +12,10 @@ module.exports = {
         secondary: '#FF3D6E'
       },
       animation: {
-        'bounce-slow': 'bounce 10s linear infinite',
-        'bounce-slower': 'bounce 14s linear infinite',
-        'bounce-slowest': 'bounce 20s linear infinite',
+        'bounce-normal': 'bounce 10s linear infinite',
+        'bounce-slow': 'bounce 14s linear infinite',
+        'bounce-slower': 'bounce 20s linear infinite',
+        'bounce-slowest': 'bounce 24s linear infinite',
       }
     },
   },

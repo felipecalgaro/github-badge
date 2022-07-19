@@ -41,13 +41,13 @@ function App() {
   const { data: profile } = useFetch<DataType>('diego3g')
 
   return (
-    <div className="w-screen bg-zinc-800 h-screen bg-blur bg-cover bg-top bg-no-repeat flex justify-center items-center relative">
-      <div className="w-auto h-screen relative flex items-center">
-        <div className="rounded-full bg-gradient-to-tr animate-bounce-slower from-primary to-secondary w-40 h-40 right-3/4 top-2/3 absolute"></div>
-        <div className="rounded-full animate-bounce-slowest bg-gradient-to-br from-primary to-secondary w-60 h-60 left-3/4 bottom-1/2 absolute"></div>
+    <div className="w-screen bg-zinc-800 h-screen bg-blur bg-cover bg-top bg-no-repeat flex justify-center items-center relative overflow-hidden">
+      <div className="w-auto h-[600px] relative flex items-center">
+        <div className="rounded-full bg-gradient-to-tr animate-bounce-slow from-primary to-secondary w-40 h-40 right-3/4 top-2/3 absolute"></div>
+        <div className="rounded-full animate-bounce-slower bg-gradient-to-br from-primary to-secondary w-60 h-60 left-3/4 bottom-1/2 absolute"></div>
         <div className="clip-path-hexagon animate-bounce-slowest bg-gradient-to-tl from-secondary to-primary w-72 h-72 right-full top-10 absolute"></div>
-        <div className="clip-path-triangle animate-bounce-slow bg-gradient-to-l from-primary to-secondary w-52 h-52 left-3/4 bottom-11 absolute"></div>
-        <main className="w-96 h-3/4 backdrop-blur-md shadow-xl shadow-[#00000057] bg-[#ffffff0c] border-2 rounded-md border-[#ffffff18] flex flex-col items-center">
+        <div className="clip-path-triangle animate-bounce-normal bg-gradient-to-l from-primary to-secondary w-52 h-52 left-3/4 bottom-11 absolute"></div>
+        <main className="w-96 h-full backdrop-blur-md shadow-xl shadow-[#00000057] bg-[#ffffff0c] border-2 rounded-md border-[#ffffff18] flex flex-col items-center">
           <div className="w-32 h-min clip-path-hexagon mt-10">
             <img src={profile?.avatar_url} alt="Github Profile Image" />
           </div>
