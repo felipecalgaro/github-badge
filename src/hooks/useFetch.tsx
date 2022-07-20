@@ -8,13 +8,14 @@ const api = axios.create({
 export function useFetch<T = unknown>(username: string, options?: AxiosRequestConfig) {
     const [data, setData] = useState<T | null>(null)
     const [isFetching, setIsFetching] = useState(true)
+    const [error, setError] = useState<boolean>(false)
 
     useEffect(() => {
         api.get(username, options)
             .then(res => setData(res.data))
-            .catch(err => console.log(err, 'a'))
+            .catch(err => setError(true))
             .finally(() => setIsFetching(false))
     }, [])
 
-    return { data, isFetching }
+    return { data, isFetching, error }
 }

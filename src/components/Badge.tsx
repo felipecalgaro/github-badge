@@ -34,7 +34,7 @@ function filterBestRepoByProperty(repos: RepositoryType[] | null, property: keyo
 }
 
 export function Badge(props: BadgeProps) {
-	const { data: profile } = useFetch<ProfileType>(props.username)
+	const { data: profile, error } = useFetch<ProfileType>(props.username)
 	const { data: repos } = useFetch<RepositoryType[]>(`${props.username}/repos`)
 	const [mostStarredRepo, setMostStarredRepo] = useState<RepositoryType>()
 	const [mostForkedRepo, setMostForkedRepo] = useState<RepositoryType>()
@@ -71,43 +71,51 @@ export function Badge(props: BadgeProps) {
 	//   }
 	// })
 
-	return (
-		<>
-			<div className="w-32 h-min clip-path-hexagon mt-10">
-				<img src={profile?.avatar_url} alt="Github Profile Image" />
+	if (!error) {
+		return (
+			<>
+				<div className="w-32 h-min clip-path-hexagon mt-10">
+					<img src={profile?.avatar_url} alt="Github Profile Image" />
+				</div>
+				<p className="text-2xl text-white text-center block font-thin">{profile?.name}</p>
+				<a target='_blank' href={profile?.html_url} className="flex gap-3 mt-4 group">
+					<img src={GithubLogo} alt="Github Logo" />
+					<p className="text-white group-hover:text-stone-400 transition-colors">{profile?.login}</p>
+				</a>
+				<div className="px-8 m-8 text-center">
+					<p className="text-stone-300 font-thin">{profile?.bio}</p>
+				</div>
+				<div className="flex justify-center items-center flex-wrap xs:gap-4 gap-6">
+					<Repository
+						name={mostForkedRepo?.name}
+						html_url={mostForkedRepo?.html_url}
+						id={id + 'fork-repo'}
+						propertyValue={mostForkedRepo?.forks}
+						property={'forks'}
+					/>
+					<Repository
+						name={mostStarredRepo?.name}
+						html_url={mostStarredRepo?.html_url}
+						id={id + 'star-repo'}
+						propertyValue={mostStarredRepo?.stargazers_count}
+						property={'stars'}
+					/>
+					{/* <Repository
+											name={mostWatchersRepo?.name}
+											html_url={mostWatchersRepo?.html_url}
+											key={id + 'watcher-repo'}
+											propertyValue={mostWatchersRepo?.watchers}
+											property={'watchers'}
+										/> */}
+				</div>
+			</>
+		)
+	} else {
+		return (
+			<div className="w-full h-full flex justify-center items-center">
+				<p className="text-white font-extralight text-lg text-center">Error while fetching Github data. Username provided is possibly incorrect.</p>
 			</div>
-			<p className="text-2xl text-white text-center block font-thin">{profile?.name}</p>
-			<a target='_blank' href={profile?.html_url} className="flex gap-3 mt-4 group">
-				<img src={GithubLogo} alt="Github Logo" />
-				<p className="text-white group-hover:text-stone-400 transition-colors">{profile?.login}</p>
-			</a>
-			<div className="px-8 m-8 text-center">
-				<p className="text-stone-300 font-thin">{profile?.bio}</p>
-			</div>
-			<div className="flex justify-center items-center flex-wrap xs:gap-4 gap-6">
-				<Repository
-					name={mostForkedRepo?.name}
-					html_url={mostForkedRepo?.html_url}
-					id={id + 'fork-repo'}
-					propertyValue={mostForkedRepo?.forks}
-					property={'forks'}
-				/>
-				<Repository
-					name={mostStarredRepo?.name}
-					html_url={mostStarredRepo?.html_url}
-					id={id + 'star-repo'}
-					propertyValue={mostStarredRepo?.stargazers_count}
-					property={'stars'}
-				/>
-				{/* <Repository
-										name={mostWatchersRepo?.name}
-										html_url={mostWatchersRepo?.html_url}
-										key={id + 'watcher-repo'}
-										propertyValue={mostWatchersRepo?.watchers}
-										property={'watchers'}
-									/> */}
-			</div>
-		</>
-	)
+		)
+	}
 }
 
