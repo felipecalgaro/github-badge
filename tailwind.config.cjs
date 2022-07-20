@@ -16,6 +16,9 @@ module.exports = {
         'bounce-slow': 'bounce 14s linear infinite',
         'bounce-slower': 'bounce 20s linear infinite',
         'bounce-slowest': 'bounce 24s linear infinite',
+      },
+      screens: {
+        'xs': '320px'
       }
     },
   },
