@@ -36,40 +36,16 @@ function filterBestRepoByProperty(repos: RepositoryType[] | null, property: keyo
 export function Badge(props: BadgeProps) {
 	const { data: profile, error } = useFetch<ProfileType>(props.username)
 	const { data: repos } = useFetch<RepositoryType[]>(`${props.username}/repos`)
+
 	const [mostStarredRepo, setMostStarredRepo] = useState<RepositoryType>()
 	const [mostForkedRepo, setMostForkedRepo] = useState<RepositoryType>()
-	// const [mostWatchersRepo, setMostWatchersRepo] = useState<RepositoryType>()
 
 	const id = useId()
-	// const [bestRepos, setBestRepos] = useState<RepositoryType[] | undefined>()
-
-	// const previousValues = useRef({ mostForkedRepo, mostStarredRepo, mostWatchersRepo })
 
 	useEffect(() => {
-		// const reposStars = repos?.map(repo => repo.stargazers_count)
-		// setMostStarredRepo(repos?.find(repo => repo.stargazers_count === Math.max(...reposStars as number[])))
-
-		// const reposForks = repos?.map(repo => repo.forks)
-		// setMostForkedRepo(repos?.find(repo => repo.forks === Math.max(...reposForks as number[])))
-
-		// const reposWatchers = repos?.map(repo => repo.watchers)
-		// setMostForkedRepo(repos?.find(repo => repo.watchers === Math.max(...reposWatchers as number[])))
-
 		filterBestRepoByProperty(repos, 'stargazers_count', setMostStarredRepo)
 		filterBestRepoByProperty(repos, 'forks', setMostForkedRepo)
-		// filterBestRepoByProperty(repos, 'watchers', setMostWatchersRepo)
 	}, [repos])
-
-	// useEffect(() => {
-	//   if (
-	//     previousValues.current.mostForkedRepo !== mostForkedRepo &&
-	//     previousValues.current.mostStarredRepo !== mostStarredRepo &&
-	//     previousValues.current.mostWatchersRepo !== mostWatchersRepo
-	//   ) {
-	//     setBestRepos([mostForkedRepo, mostStarredRepo, mostWatchersRepo] as RepositoryType[])
-	//     previousValues.current = { mostForkedRepo, mostStarredRepo, mostWatchersRepo }
-	//   }
-	// })
 
 	if (!error) {
 		return (
@@ -100,20 +76,13 @@ export function Badge(props: BadgeProps) {
 						propertyValue={mostStarredRepo?.stargazers_count}
 						property={'stars'}
 					/>
-					{/* <Repository
-											name={mostWatchersRepo?.name}
-											html_url={mostWatchersRepo?.html_url}
-											key={id + 'watcher-repo'}
-											propertyValue={mostWatchersRepo?.watchers}
-											property={'watchers'}
-										/> */}
 				</div>
 			</>
 		)
 	} else {
 		return (
 			<div className="w-full h-full flex justify-center items-center">
-				<p className="text-white font-extralight text-lg text-center">Error while fetching Github data. Username provided is possibly incorrect.</p>
+				<p className="text-white font-extralight text-lg text-center">{`Error while fetching Github data. Username '${props.username}' is possibly incorrect.`}</p>
 			</div>
 		)
 	}

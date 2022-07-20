@@ -9,7 +9,6 @@ interface RepositoryProps {
 }
 
 export default function Repository(props: RepositoryProps) {
-    console.log('chegou');
     return (
         <div className="flex justify-center items-center text-center gap-2 flex-col text-white font-sans w-full xs:w-auto">
             <a
