@@ -8,7 +8,10 @@ module.exports = {
         vector: 'url(/src/assets/vector.svg)',
       },
       colors: {
-        primary: '#FFC323',
+        primary: {
+          300: '#FFC323',
+          500: '#c49516'
+        },
         secondary: '#FF3D6E'
       },
       animation: {
