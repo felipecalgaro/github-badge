@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Badge } from "./components/Badge";
-import { Login } from "./components/Login";
+import { InformUser } from './components/InformUser';
 
 export default function App() {
-  const [isLogged, setIsLogged] = useState(false)
+  const [isUserInformed, setIsUserInformed] = useState(false)
   const [username, setUsername] = useState('')
 
   return (
@@ -13,8 +13,8 @@ export default function App() {
         <div className="rounded-full animate-bounce-slower bg-gradient-to-br from-primary-300 to-secondary w-60 h-60 left-3/4 bottom-1/2 absolute"></div>
         <div className="clip-path-hexagon animate-bounce-slowest bg-gradient-to-tl from-secondary to-primary-300 w-72 h-72 right-full top-10 absolute"></div>
         <div className="clip-path-triangle animate-bounce-normal bg-gradient-to-l from-primary-300 to-secondary w-52 h-52 left-3/4 bottom-11 absolute"></div>
-        <main className={isLogged ? "w-96 h-full backdrop-blur-md shadow-xl shadow-[#00000057] bg-[#ffffff0c] border-2 rounded-md border-[#ffffff18] flex flex-col items-center" : "w-96 h-auto backdrop-blur-md shadow-xl shadow-[#00000057] bg-[#ffffff0c] border-2 rounded-md border-[#ffffff18] flex flex-col items-center"}>
-          {isLogged ? <Badge username={username} /> : <Login setUsername={setUsername} setIsLogged={setIsLogged} />}
+        <main className={isUserInformed ? "w-96 h-full backdrop-blur-md shadow-xl shadow-[#00000057] bg-[#ffffff0c] border-2 rounded-md border-[#ffffff18] flex flex-col items-center" : "w-96 h-auto backdrop-blur-md shadow-xl shadow-[#00000057] bg-[#ffffff0c] border-2 rounded-md border-[#ffffff18] flex flex-col items-center"}>
+          {isUserInformed ? <Badge username={username} /> : <InformUser setUsername={setUsername} setIsUserInformed={setIsUserInformed} />}
         </main>
       </div>
     </div>

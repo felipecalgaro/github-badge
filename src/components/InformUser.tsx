@@ -1,24 +1,24 @@
 import { FormEvent, useState } from "react"
 import GithubLogo from '../assets/github-logo.svg'
 
-interface LoginProps {
-    setIsLogged: (arg: boolean) => void
+interface InformUserProps {
+    setIsUserInformed: (arg: boolean) => void
     setUsername: (arg: string) => void
 }
 
-export function Login(props: LoginProps) {
+export function InformUser(props: InformUserProps) {
     const [inputValue, setInputValue] = useState('')
 
     return (
         <>
-            <p className="font-light text-white mt-12 xs:text-2xl text-xl">Login to your Github account</p>
+            <p className="font-light text-white mt-12 xs:text-2xl text-xl">Inform your Github username</p>
             <form
                 className="mt-8 flex flex-col w-full px-12 gap-6"
                 autoComplete="off"
                 onSubmit={
                     (e: FormEvent) => {
                         e.preventDefault()
-                        props.setIsLogged(true)
+                        props.setIsUserInformed(true)
                         props.setUsername(inputValue)
                     }
                 }>
