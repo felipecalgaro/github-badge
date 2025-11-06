@@ -13,7 +13,7 @@ This project is a badge generated with your or anyone else's Github informations
 
 You just need to type the Github username on the input, and then click on _Submit_.
 
-![login step](https://user-images.githubusercontent.com/102491212/180016820-fd5ce936-4277-482e-95a4-3f8697906e54.png)
+![inform user](https://github.com/user-attachments/assets/475c7b00-111f-491d-8801-f9e8c77b44ea)
 
 After that, the badge will be automatically generated. You can click on the username to go to the Github profile, or you can also see the best repositories of that person and visit them.
 
