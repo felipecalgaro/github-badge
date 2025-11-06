@@ -1,10 +1,17 @@
 # Github Badge
 
+## What I Learned
+
+- How to make a fetch request to an external API and handle its data
+
+## Overview
+
 This project is a badge generated with your or anyone else's Github informations, like profile picture, name, username, repositories and more.
 <br>
-### How to use 
 
-You just need to type the Github username on the input, and then click on *Submit*.
+## How to use
+
+You just need to type the Github username on the input, and then click on _Submit_.
 
 ![login step](https://user-images.githubusercontent.com/102491212/180016820-fd5ce936-4277-482e-95a4-3f8697906e54.png)
 
@@ -16,9 +23,9 @@ In case of error while trying to fetch Github data, there'll be a message to war
 
 ![error image](https://user-images.githubusercontent.com/102491212/180023322-462275c3-a75f-4b9b-bc6c-89fd04561a81.png)
 <br>
-### Technologies used
+
+## Technologies used
 
 - React (with Typescript)
-  - useState, useEffect and useId
-  - useFetch (hook created by myself to fetch URLs with axios library)
 - TailwindCSS
+- Axios
